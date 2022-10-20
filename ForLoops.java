@@ -5,3 +5,5 @@ public class ForLoops {
         }   
      }
 }
+
+// For loops are best when you know how many times the loop is supposed to run
