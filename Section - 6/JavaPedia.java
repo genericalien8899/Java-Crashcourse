@@ -13,12 +13,12 @@ public class JavaPedia {
         for (int i = 0; i < numberOfEntries ; i++)
         {
             System.out.println("Figure "+(i+1));
-            System.out.println("\tName : ");
+            System.out.print("\tName : ");
             entries[i][0] = scan.nextLine();
-            System.out.println("\tDate of Birth : ");
+            System.out.print("\tDate of Birth : ");
             entries[i][1] = scan.next();
             scan.nextLine();
-            System.out.println("\tOccupation : ");
+            System.out.print("\tOccupation : ");
             entries[i][2] = scan.nextLine();
         }
         System.out.println("These are the values you stored");
@@ -36,8 +36,8 @@ public class JavaPedia {
             if (entries[i][0].equals(search))
             {
                 System.out.println("Name : " + entries[i][0]);
-                System.out.println("Date of Birth : " + entries[i][0]);
-                System.out.println("tOccupation : " + entries[i][0]);
+                System.out.println("Date of Birth : " + entries[i][1]);
+                System.out.println("Occupation : " + entries[i][2]);
                 break;
             }
         }
