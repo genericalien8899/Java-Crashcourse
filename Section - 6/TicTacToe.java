@@ -1,18 +1,31 @@
-public class TicTacToe {
+import java.util.Locale;
+import java.util.Scanner;
+
+public class TicTacToe 
+{
+    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) 
-    {
+    {   
+        
         char[][] board = {{'_','_','_'},{'_','_','_'},{'_','_','_'}};
         print2DArray(board);
-        String x;
-        String O;
         for (int i = 0 ; i < 9; i ++)
         {
             if(i%2==0)
             {
-                askuser(x);
+                System.out.println("Turn : x ");
+                int[] spot = askuser(board);
+                board[spot[0]][spot[1]] = 'x' ;
             }
+            else
+            {
+                System.out.println("Turn : O ");
+                int[] spot = askuser(board);
+                board[spot[0]][spot[1]] = 'o' ;
+            }
+            print2DArray(board);
         }
-
+        scan.close();
     }
     public static void print2DArray(char[][] board)
     {
@@ -27,13 +40,12 @@ public class TicTacToe {
         }
         System.out.println();
     }
-    public static void askuser(String choice)
+    public static int[] askuser(char[][] board)
     {
-        System.out.println("Turn "+ choice);
-        System.out.print("Pick a row and column");
-        ``
-
-
-        print2DArray(null);
+        System.out.print("\tPick a row and column number ");
+        int row = scan.nextInt();
+        int element = scan.nextInt();
+        return new int[] {row,element};
     }
+    
 }
