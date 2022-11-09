@@ -9,6 +9,7 @@ public class TicTacToe
         
         char[][] board = {{'_','_','_'},{'_','_','_'},{'_','_','_'}};
         print2DArray(board);
+        int counter = 0;
         for (int i = 0 ; i < 9; i ++)
         {
             if(i%2==0)
@@ -24,7 +25,7 @@ public class TicTacToe
                 board[spot[0]][spot[1]] = 'o' ;
             }
             print2DArray(board);
-            int counter = checkWin(board);
+            counter = checkWin(board);
             if(counter==3)
             {
                 System.out.println("x wins");
@@ -35,6 +36,10 @@ public class TicTacToe
                 System.out.println("o wins");
                 break;
             }
+        }
+        if (counter != 3 || counter != -3)
+        {
+            System.out.println("Its a draw. Everybody wins");
         }
         scan.close();
     }
@@ -67,7 +72,7 @@ public class TicTacToe
     public static int checkWin(char[][] board)
     {
         int count = 0 ;
-        for(int i = 0; i < board.length ; i++)
+        for(int i = 0; i < board.length ; i++) // checking horizontally
         {
             for(int j =0;j<board[i].length ; j++)
             {
@@ -87,6 +92,60 @@ public class TicTacToe
             else
             {
                 count = 0;
+            }
+        }
+        for(int i = 0; i < 3 ; i++) // checking vertically
+        {
+            for (int j =0 ; j<board.length;j++)
+            {
+                if(board[j][i] == 'x')
+                {
+                    count++;
+                }
+                else if(board[j][i] == 'o')
+                {
+                    count--;
+                }
+            }
+            if (count == 3 || count == -3)
+            {
+                return count;
+            }
+            else
+            {
+                count = 0;
+            }
+        }
+        for (int i = 0; i < 3 ; i++)
+        {
+            if(board[i][i] == 'x')
+            {
+                count++;
+            }
+            else if(board[i][i] == 'o')
+            {
+                count--;
+            }
+    
+        }
+        if (count == 3 || count == -3)
+        {
+            return count;
+        }
+        else
+        {
+            count = 0;
+        }
+
+        for(int i = 0; i < 3; i++){
+            int jrow = 2-i;
+            if(board[i][jrow] == 'x')
+            {
+                count++;
+            }
+            else if(board[i][jrow] == 'o')
+            {
+                count--;
             }
         }
         return count;
