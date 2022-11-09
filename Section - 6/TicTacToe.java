@@ -24,6 +24,17 @@ public class TicTacToe
                 board[spot[0]][spot[1]] = 'o' ;
             }
             print2DArray(board);
+            int counter = checkWin(board);
+            if(counter==3)
+            {
+                System.out.println("x wins");
+                break;
+            }
+            else if(counter==-3)
+            {
+                System.out.println("o wins");
+                break;
+            }
         }
         scan.close();
     }
@@ -45,7 +56,40 @@ public class TicTacToe
         System.out.print("\tPick a row and column number ");
         int row = scan.nextInt();
         int element = scan.nextInt();
+        while(board[row][element] != '_')
+        {
+            System.out.print("Spot taken, choose again ");
+            row = scan.nextInt();
+            element = scan.nextInt();
+        }
         return new int[] {row,element};
+    }
+    public static int checkWin(char[][] board)
+    {
+        int count = 0 ;
+        for(int i = 0; i < board.length ; i++)
+        {
+            for(int j =0;j<board[i].length ; j++)
+            {
+                if(board[i][j] == 'x')
+                {
+                    count++;
+                }
+                else if(board[i][j] == 'o')
+                {
+                    count--;
+                }
+            }
+            if (count == 3 || count == -3)
+            {
+                return count;
+            }
+            else
+            {
+                count = 0;
+            }
+        }
+        return count;
     }
     
 }
